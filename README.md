@@ -32,6 +32,10 @@ The job of the convolutional layer is feature extraction. It learns to find spat
 
 ![](images/convolution.gif)
 
+2. Batch Normalization: Batch normalization is a technique for training very deep neural networks that standardizes the inputs to a layer for each mini-batch. This has the effect of stabilizing the learning process and dramatically reducing the number of training epochs required to train deep networks.
+
+![](images/bn.png)
+
 3. The activation function is a mathematical “gate” in between the input feeding the current neuron and its output going to the next layer. It can be as simple as a step function that turns the neuron output on and off, depending on a rule or threshold. Or it can be a transformation that maps the input signals into output signals that are needed for the neural network to function.
 
 ReLU (Rectified Linear Unit)
