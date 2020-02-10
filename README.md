@@ -46,9 +46,9 @@ Advantages:
 - Computationally efficient—allows the network to converge very quickly.
 - Non-linear—although it looks like a linear function, ReLU has a derivative function and allows for backpropagation.
 
-4. Pooling Layer: After the convolutional layer comes the pooling layer; the most common type of pooling layer is maxpooling layer. The main goal of the pooling layer is dimensionality reduction, meaning reducing the size of an image by taking the max value from the window. A maxpooling operation breaks an image into smaller patches. A maxpooling layer is defined by a patch size and stride. For a patch size of 2×2 and a stride of 2, this window will perfectly cover the image. A smaller stride would see some overlap in patches and a larger stride would miss some pixels entirely. So, we generally see a patch size and a stride size that are the same.
+4. Pooling: The pooling layer reduces the spatial size of the input representation, which then reduces the number of parameters and computations in the network. This makes it easier to detect objects in an image no matter where they’re located.
 
-![](images/pooling.jpg)
+![](images/pooling.png)
 
 
 1. Satellite image segmentation
