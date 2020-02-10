@@ -50,6 +50,7 @@ Advantages:
 
 ![](images/pooling.png)
 
+#### Datasets
 
 1. Satellite image segmentation
 
