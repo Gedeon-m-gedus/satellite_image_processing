@@ -32,7 +32,17 @@ The job of the convolutional layer is feature extraction. It learns to find spat
 
 ![](images/convolution.gif)
 
-2. Pooling Layer: After the convolutional layer comes the pooling layer; the most common type of pooling layer is maxpooling layer. The main goal of the pooling layer is dimensionality reduction, meaning reducing the size of an image by taking the max value from the window. A maxpooling operation breaks an image into smaller patches. A maxpooling layer is defined by a patch size and stride. For a patch size of 2×2 and a stride of 2, this window will perfectly cover the image. A smaller stride would see some overlap in patches and a larger stride would miss some pixels entirely. So, we generally see a patch size and a stride size that are the same.
+3. The activation function is a mathematical “gate” in between the input feeding the current neuron and its output going to the next layer. It can be as simple as a step function that turns the neuron output on and off, depending on a rule or threshold. Or it can be a transformation that maps the input signals into output signals that are needed for the neural network to function.
+
+ReLU (Rectified Linear Unit)
+
+![](images/relu.jpeg)
+
+Advantages: 
+- Computationally efficient—allows the network to converge very quickly.
+- Non-linear—although it looks like a linear function, ReLU has a derivative function and allows for backpropagation.
+
+4. Pooling Layer: After the convolutional layer comes the pooling layer; the most common type of pooling layer is maxpooling layer. The main goal of the pooling layer is dimensionality reduction, meaning reducing the size of an image by taking the max value from the window. A maxpooling operation breaks an image into smaller patches. A maxpooling layer is defined by a patch size and stride. For a patch size of 2×2 and a stride of 2, this window will perfectly cover the image. A smaller stride would see some overlap in patches and a larger stride would miss some pixels entirely. So, we generally see a patch size and a stride size that are the same.
 
 ![](images/pooling.jpg)
 
