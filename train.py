@@ -20,6 +20,7 @@ import torch.nn.init
 from torch.autograd import Variable
 
 from model import SegNet
+from dataset import ISPRS_dataset
 
 
 # Utils functions
