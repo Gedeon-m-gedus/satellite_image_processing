@@ -50,4 +50,35 @@ class ISPRS_dataset(torch.utils.data.Dataset):
             
         return tuple(results)
     
-    
+    def __getitem__(self, i):
+        # Pick a random image
+        random_idx = random.randint(0, len(self.data_files) - 1)
+        
+        # If the tile hasn't been loaded yet, put in cache
+        if random_idx in self.data_cache_.keys():
+            data = self.data_cache_[random_idx]
+        else:
+            # Data is normalized in [0, 1]
+            data = 1/255 * np.asarray(io.imread(self.data_files[random_idx]).transpose((2,0,1)), dtype='float32')
+            if self.cache:
+                self.data_cache_[random_idx] = data
+            
+        if random_idx in self.label_cache_.keys():
+            label = self.label_cache_[random_idx]
+        else: 
+            # Labels are converted from RGB to their numeric values
+            label = np.asarray(convert_from_color(io.imread(self.label_files[random_idx])), dtype='int64')
+            if self.cache:
+                self.label_cache_[random_idx] = label
+
+        # Get a random patch
+        x1, x2, y1, y2 = get_random_pos(data, WINDOW_SIZE)
+        data_p = data[:, x1:x2,y1:y2]
+        label_p = label[x1:x2,y1:y2]
+        
+        # Data augmentation
+        data_p, label_p = self.data_augmentation(data_p, label_p)
+
+        # Return the torch.Tensor values
+        return (torch.from_numpy(data_p),
+                torch.from_numpy(label_p))
