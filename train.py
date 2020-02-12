@@ -8,7 +8,7 @@ import random
 import itertools
 
 import matplotlib.pyplot as plt
-%matplotlib inline
+#%matplotlib inline
 
 import torch
 import torch.nn as nn
