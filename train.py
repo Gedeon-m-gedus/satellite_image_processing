@@ -1,3 +1,4 @@
+#importing all the required dependacies
 import numpy as np
 from skimage import io
 from glob import glob
@@ -122,3 +123,30 @@ def metrics(predictions, gts, label_values=LABELS):
     kappa = (pa - pe) / (1 - pe);
     print("Kappa: " + str(kappa))
     return accuracy
+
+# Transfer learning technique, to use pre-trained model
+    import os
+try:
+    from urllib.request import URLopener
+except ImportError:
+    from urllib import URLopener
+
+# Download VGG-16 weights from PyTorch
+vgg_url = 'https://download.pytorch.org/models/vgg16_bn-6c64b313.pth'
+if not os.path.isfile('./vgg16_bn-6c64b313.pth'):
+    weights = URLopener().retrieve(vgg_url, './vgg16_bn-6c64b313.pth')
+
+vgg16_weights = torch.load('./vgg16_bn-6c64b313.pth')
+mapped_weights = {}
+for k_vgg, k_segnet in zip(vgg16_weights.keys(), net.state_dict().keys()):
+    if "features" in k_vgg:
+        mapped_weights[k_segnet] = vgg16_weights[k_vgg]
+        print("Mapping {} to {}".format(k_vgg, k_segnet))
+        
+try:
+    net.load_state_dict(mapped_weights)
+    print("Loaded VGG-16 weights in SegNet !")
+except:
+    # Ignore missing keys
+    pass
+
