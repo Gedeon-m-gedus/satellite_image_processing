@@ -50,8 +50,7 @@ Advantages:
 
 ![](images/pooling.png)
 
-#### Datasets
+### Transfer Learning
+Transfer learning (TL) is a research problem in machine learning (ML) that focuses on storing knowledge gained while solving one problem and applying it to a different but related problem. For example, knowledge gained while learning to recognize cars could apply when trying to recognize trucks. 
+We download and load the pre-trained weights from VGG-16 on ImageNet. This step is optional but it makes the network converge faster. We skip the weights from VGG-16 that have no counterpart in our network.
 
-1. Satellite image segmentation
-
-2. Satellite image captioning
